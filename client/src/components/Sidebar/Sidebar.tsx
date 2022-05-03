@@ -103,6 +103,17 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
     };
   }, [slim]);
 
+  React.useEffect(() => {
+    const headerToggle = document.querySelector('[data-mobile-sidebar-toggle]');
+    if (!headerToggle) {
+      return;
+    }
+    headerToggle.addEventListener('click', () => onClickOpenCloseToggle());
+    return () => {
+      headerToggle.removeEventListener('click', onClickOpenCloseToggle());
+    };
+  }, []);
+
   const onClickCollapseToggle = () => {
     setCollapsed(!collapsed);
 
@@ -187,15 +198,13 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({
         onClick={onClickOpenCloseToggle}
         aria-label={gettext('Toggle sidebar')}
         aria-expanded={visibleOnMobile ? 'true' : 'false'}
-        className={
-          'button sidebar-nav-toggle' +
-          (isMobile ? ' sidebar-nav-toggle--mobile' : '') +
-          (visibleOnMobile ? ' sidebar-nav-toggle--open' : '')
-        }
+        className={`button sidebar-nav-toggle sidebar-nav-toggle__close-button ${
+          visibleOnMobile ? 'w-flex' : 'w-hidden'
+        }`}
         type="button"
         ref={mobileNavToggleRef}
       >
-        {visibleOnMobile ? <Icon name="cross" /> : <Icon name="bars" />}
+        <Icon name="cross" />
       </button>
       <div
         className={
