@@ -1,13 +1,8 @@
 @use 'sass:math';
 @use 'sass:color';
 
-header {
-  @apply w-text-primary w-mb-8;
-
-  padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
-  padding-inline-start: 110px;
-  padding-inline-end: 20px;
+.header {
+  @apply w-flex w-text-primary w-mb-8 sm:w-px-[50px];
 
   a {
     @apply w-text-primary w-underline;
@@ -15,25 +10,11 @@ header {
 
   h1,
   h2 {
-    @apply w-text-primary;
-    margin: 0;
+    @apply w-text-primary w-m-0;
   }
 
   h1 {
     @apply w-h1;
-    position: relative;
-
-    > svg.icon {
-      position: absolute;
-      // Remove once we drop support for Safari 13.
-      // stylelint-disable-next-line property-disallowed-list
-      left: -1.5em;
-      inset-inline-start: -1.5em;
-      top: 0.125em;
-      max-width: 1em;
-      max-height: 1em;
-      vertical-align: text-top;
-    }
 
     span {
       margin-inline-start: 0.3125rem;
@@ -173,8 +154,6 @@ header {
 @include media-breakpoint-up(sm) {
   header {
     padding-top: 1.5rem;
-    padding-inline-start: 90px;
-    padding-inline-end: 90px;
 
     .left {
       float: left;

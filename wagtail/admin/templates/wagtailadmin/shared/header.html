@@ -14,28 +14,29 @@
     - `action_icon` - icon for the 'action' button, default is 'icon-plus'
 
 {% endcomment %}
-<header class="{% if merged %}merged{% endif %} {% if search_form %}hasform{% endif %}">
+<header class="header w-flex {% if merged %}merged{% endif %} {% if search_form %}hasform{% endif %}">
+    {% include 'wagtailadmin/shared/sidebar-nav-toggle.html' %}
     {% block breadcrumb %}{% endblock %}
-    <div class="row">
-        <div class="left">
-            <div class="col">
-                <h1>{% if icon %}{% icon name=icon %}{% endif %}
-                    {{ title }}{% if subtitle %} <span>{{ subtitle }}</span>{% endif %}</h1>
-            </div>
+    <div class="w-py-2 w-pl-6 sm:w-pb-6 sm:w-pl-0 w-flex w-flex-wrap w-justify-between w-items-center w-flex-1 w-gap-5">
+
+        <div class="w-flex w-justify-center w-gap-5">
+            <h1 class="w-flex w-flex-row w-items-center">{% if icon %}{% icon name=icon class_name="w-w-5 w-h-5 w-flex-shrink-0 w-mr-3" %}{% endif %}
+                {{ title }}{% if subtitle %} <span>{{ subtitle }}</span>{% endif %}</h1>
             {% if search_url %}
-                <form class="col search-form" action="{% url search_url %}{% if query_parameters %}?{{ query_parameters }}{% endif %}" method="get" novalidate role="search">
+                <form class="search-form" action="{% url search_url %}{% if query_parameters %}?{{ query_parameters }}{% endif %}" method="get" novalidate role="search">
                     <ul class="fields">
                         {% for field in search_form %}
                             {% include "wagtailadmin/shared/field_as_li.html" with field=field field_classes="field-small iconfield" icon="search" %}
                         {% endfor %}
-                        {% comment %}Add an initial disabled & hidden submit button so that pressing 'enter' will not submit form. Reload not required as the content is dynamically loaded.{% endcomment %}
+                        {% comment %}Add an initial disabled & hidden submit button so that pressing 'enter' will not submit form. Reload not required as the content is dynamically
+                            loaded.{% endcomment %}
                         <li class="visuallyhidden"><input disabled type="submit" aria-hidden="true"/></li>
-                        <li class="submit visuallyhidden"><input type="submit" value="Search" class="button" /></li>
+                        <li class="submit visuallyhidden"><input type="submit" value="Search" class="button"/></li>
                     </ul>
                 </form>
             {% endif %}
         </div>
-        <div class="{% block right_column_classname %}right{% endblock %}">
+        <div class="{% block right_column_classname %}{% endblock %}">
             {% block right_column %}
                 {% if action_url %}
                     <div class="actionbutton">
@@ -47,5 +48,6 @@
             {% endblock %}
         </div>
     </div>
+
     {% block extra_rows %}{% endblock %}
 </header>
