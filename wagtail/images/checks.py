@@ -1,4 +1,5 @@
 import os
+import io
 from functools import lru_cache
 
 from django.core.checks import Warning, register
@@ -10,11 +11,11 @@ def has_jpeg_support():
     wagtail_jpg = os.path.join(os.path.dirname(__file__), "check_files", "wagtail.jpg")
     succeeded = True
 
-    with open(wagtail_jpg, "rb") as f:
-        try:
-            Image.open(f)
-        except (IOError, Image.LoaderError):
-            succeeded = False
+    # with open(wagtail_jpg, "rb") as f:
+    try:
+        Image.open(wagtail_jpg)
+    except (IOError, Image.LoaderError):
+        succeeded = False
 
     return succeeded
 
@@ -24,11 +25,11 @@ def has_png_support():
     wagtail_png = os.path.join(os.path.dirname(__file__), "check_files", "wagtail.png")
     succeeded = True
 
-    with open(wagtail_png, "rb") as f:
-        try:
-            Image.open(f)
-        except (IOError, Image.LoaderError):
-            succeeded = False
+    # with open(wagtail_png, "rb") as f:
+    try:
+        Image.open(wagtail_png)
+    except (IOError, Image.LoaderError):
+        succeeded = False
 
     return succeeded
 

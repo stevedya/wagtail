@@ -15,7 +15,6 @@
   }
 
   &__list {
-    //@include nice-padding();
     @apply w-flex w-my-[3px] w-space-x-6 w-border-b w-border-grey-100 w-w-fit;
   }
 
@@ -64,10 +63,6 @@
     w-border-grey-50
     w-rounded-[1rem];
   }
-
-  //&__panel {
-  //  @include nice-padding();
-  //}
 
   // Optional animate attr for tabs to animate in
   &[data-tabs-animate] &__panel {
