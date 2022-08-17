@@ -4,6 +4,11 @@ $header-button-size: theme('spacing.8');
 
 .w-panel {
   margin-bottom: theme('spacing.10');
+  padding-inline-start: theme('spacing.5');
+
+   @include media-breakpoint-up(sm) {
+     padding-inline-start: 0;
+   }
 }
 
 .w-panel__header {
