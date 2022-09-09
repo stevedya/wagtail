@@ -445,8 +445,9 @@ table.listing {
 
 // explorer specific tweaks
 .page-explorer .w-breadcrumb {
-  li[hidden] ~ li:last-child,
-  li:only-child {
+  //li[hidden] ~ li:last-child,
+  //li:only-child,
+   li:last-child {
     a {
       font-size: theme('fontSize.18');
       font-weight: theme('fontWeight.extrabold');
