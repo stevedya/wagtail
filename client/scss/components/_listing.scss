@@ -449,12 +449,13 @@ table.listing {
   li:only-child {
     a {
       font-size: theme('fontSize.18');
+      font-weight: theme('fontWeight.extrabold');
+
+      @include media-breakpoint-up(md) {
+        font-size: theme('fontSize.30');
+      }
     }
   }
-}
-
-.page-explorer .w-slim-header {
-  padding-inline-start: 0;
 }
 
 .page-explorer .listing {
