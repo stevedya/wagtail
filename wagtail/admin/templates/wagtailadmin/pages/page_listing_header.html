@@ -7,7 +7,7 @@
         {{ title }}
     </h1>
     {# breadcrumbs #}
-    <div class="w-py-3{% if parent_page.is_root %} w-pl-3 w-overflow-hidden{% endif %}">
+    <div class="w-py-3 w-overflow-hidden{% if parent_page.is_root %} w-pl-3{% endif %}">
         {% breadcrumbs parent_page 'wagtailadmin_explore' url_root_name='wagtailadmin_explore_root' is_expanded=parent_page.is_root %}
     </div>
     {# Actions divider #}
